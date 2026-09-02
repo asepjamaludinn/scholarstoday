@@ -2,13 +2,15 @@ import { useNavigate } from "react-router-dom";
 import heroImg from "../../assets/images/hero.jpg";
 import heroVideo from "../../assets/videos/hero.mp4";
 import Button from "../../components/ui/Button";
+import Heading from "../../components/ui/Heading";
+import Text from "../../components/ui/Text";
 
 export default function HeroSection() {
   const navigate = useNavigate();
 
   return (
     <section className="relative w-full overflow-hidden">
-      <div className="relative mx-auto aspect-[16/9] w-full max-h-[820px] min-h-[560px]">
+      <div className="relative aspect-[3/4] w-full sm:aspect-[16/10] md:aspect-[16/9] md:max-h-[820px] md:min-h-[560px]">
         <img
           src={heroImg}
           alt="Siswa belajar dengan semangat"
@@ -17,8 +19,8 @@ export default function HeroSection() {
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
-        <div className="absolute left-6 top-24 max-w-xl md:left-14 md:top-28">
-          <h1 className="text-5xl font-black leading-[1.05] tracking-tight text-primary sm:text-6xl lg:text-7xl">
+        <div className="absolute left-4 right-4 top-28 sm:left-6 sm:right-auto sm:top-32 sm:max-w-md md:left-14 md:top-36 md:max-w-xl">
+          <Heading level="display" className="text-primary">
             Temukan jalur
             <br />
             <span
@@ -29,10 +31,12 @@ export default function HeroSection() {
             </span>
             <br />
             untukmu
-          </h1>
+          </Heading>
         </div>
+      </div>
 
-        <div className="absolute bottom-6 left-6 w-[70%] max-w-sm rounded-3xl bg-white p-3 shadow-xl md:bottom-10 md:left-14 md:max-w-md">
+      <div className="relative z-10 -mt-24 flex flex-col items-center gap-4 px-4 pb-8 sm:-mt-32 sm:px-6 sm:pb-10 md:absolute md:inset-x-0 md:bottom-10 md:mt-0 md:flex-row md:items-end md:justify-between md:gap-6 md:px-14 md:pb-0">
+        <div className="w-[85%] max-w-sm rounded-3xl bg-white p-2.5 shadow-2xl md:w-[55%] md:max-w-md md:p-3">
           <div className="relative aspect-video overflow-hidden rounded-2xl bg-slate-200">
             <video
               src={heroVideo}
@@ -43,16 +47,16 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="absolute bottom-6 right-6 max-w-xs rounded-3xl bg-slate-900/70 p-6 backdrop-blur-md md:bottom-10 md:right-14 md:max-w-sm">
-          <p className="text-sm font-medium leading-relaxed text-white md:text-base">
+        <div className="w-full max-w-sm rounded-3xl bg-slate-900/85 p-6 backdrop-blur-md md:max-w-sm md:bg-slate-900/70">
+          <Text size="lg" className="leading-relaxed text-white">
             Ikuti tes penempatan singkat kami dan dapatkan rekomendasi kelas
             yang sesuai levelmu, tanpa buang waktu belajar dari nol.
-          </p>
+          </Text>
 
           <Button
             variant="primary"
             onClick={() => navigate("/register")}
-            className="mt-5"
+            className="mt-5 w-full md:w-auto"
           >
             Mulai tes sekarang
           </Button>

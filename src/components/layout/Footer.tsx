@@ -4,7 +4,7 @@ import { FOOTER_SOCIAL_LINKS } from "../../constants/footer";
 
 export default function Footer() {
   return (
-    <footer className="w-full overflow-hidden rounded-t-[2.5rem] bg-slate-100 px-6 pb-10 pt-16 md:px-14 md:pt-20">
+    <footer className="w-full overflow-hidden rounded-t-[2.5rem] bg-white px-4 pb-8 pt-12 sm:px-6 sm:pb-10 sm:pt-16 md:px-14 md:pt-20">
       <div className="mx-auto max-w-[1400px]">
         <div className="flex items-center justify-center gap-3">
           {FOOTER_SOCIAL_LINKS.map((social) => (
@@ -21,15 +21,15 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-8 -mb-4 select-none md:mt-10">
+        <div className="mt-6 select-none sm:mt-8">
           <span
-            className="block w-full text-center text-[20vw] font-black italic leading-[0.75] tracking-tighter text-primary md:text-[9rem] lg:text-[11rem]"
+            className="block w-full whitespace-nowrap text-center font-black italic text-wordmark text-primary"
             aria-hidden="true"
           >
-            scholars
+            scholarstoday
           </span>
 
-          <div className="mt-1 flex items-center justify-between text-xs font-medium text-slate-400 md:text-sm">
+          <div className="mt-3 flex flex-col items-center gap-1.5 text-center text-xs font-medium text-slate-400 sm:mt-2 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:text-left sm:text-small">
             <span>© {new Date().getFullYear()} Scholars Today</span>
             <a href="/terms" className="transition-colors hover:text-primary">
               Syarat & Ketentuan

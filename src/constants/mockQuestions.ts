@@ -1,0 +1,902 @@
+export type Question = {
+  id: number;
+  question: string;
+  options: {
+    key: "A" | "B" | "C" | "D";
+    text: string;
+  }[];
+  correctAnswer: "A" | "B" | "C" | "D";
+  program:
+    | "Web Development"
+    | "Data Science"
+    | "UI/UX Design"
+    | "Digital Marketing";
+};
+
+export const MOCK_QUESTIONS: Question[] = [
+  {
+    id: 1,
+    program: "UI/UX Design",
+    question:
+      "Apa tujuan utama dari pembuatan wireframe dalam proses desain antarmuka produk digital?",
+    options: [
+      { key: "A", text: "Menentukan palet warna akhir" },
+      { key: "B", text: "Membuat animasi interaktif yang kompleks" },
+      { key: "C", text: "Menyusun tata letak dasar dan struktur fungsional" },
+      { key: "D", text: "Menulis kode program front-end" },
+    ],
+    correctAnswer: "C",
+  },
+  {
+    id: 2,
+    program: "UI/UX Design",
+    question: "Apa singkatan dari UX dalam industri pembuatan produk digital?",
+    options: [
+      { key: "A", text: "User Xperiment" },
+      { key: "B", text: "User Experience" },
+      { key: "C", text: "Universal Extension" },
+      { key: "D", text: "Unified Execution" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 3,
+    program: "UI/UX Design",
+    question:
+      "Prinsip desain yang menyatakan bahwa elemen-elemen yang saling berdekatan dianggap memiliki keterkaitan disebut:",
+    options: [
+      { key: "A", text: "Law of Similarity" },
+      { key: "B", text: "Law of Proximity" },
+      { key: "C", text: "Law of Closure" },
+      { key: "D", text: "Fitts's Law" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 4,
+    program: "UI/UX Design",
+    question:
+      "Metode riset UX apa yang melibatkan pengamatan langsung terhadap pengguna saat mereka menggunakan produk?",
+    options: [
+      { key: "A", text: "A/B Testing" },
+      { key: "B", text: "Usability Testing" },
+      { key: "C", text: "Survey Online" },
+      { key: "D", text: "Card Sorting" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 5,
+    program: "UI/UX Design",
+    question: "Apa fungsi dari User Persona dalam proses perancangan produk?",
+    options: [
+      {
+        key: "A",
+        text: "Sebagai representasi profil target pengguna fiktif berdasarkan data riset",
+      },
+      { key: "B", text: "Untuk menentukan struktur database aplikasi" },
+      { key: "C", text: "Sebagai panduan penulisan script backend" },
+      { key: "D", text: "Alat untuk menguji kecepatan loading halaman web" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 6,
+    program: "UI/UX Design",
+    question:
+      "Hukum UX manakah yang menyatakan bahwa waktu untuk mencapai suatu target adalah fungsi dari jarak dan ukuran target?",
+    options: [
+      { key: "A", text: "Hick's Law" },
+      { key: "B", text: "Fitts's Law" },
+      { key: "C", text: "Jakob's Law" },
+      { key: "D", text: "Miller's Law" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 7,
+    program: "UI/UX Design",
+    question:
+      "Apa kegunaan utama dari Card Sorting dalam perancangan Information Architecture?",
+    options: [
+      {
+        key: "A",
+        text: "Membantu desainer mengelompokkan dan memberi label konten secara logis bagi pengguna",
+      },
+      { key: "B", text: "Memilih kombinasi warna gradasi terbaik" },
+      { key: "C", text: "Membuat purwarupa interaktif berkecepatan tinggi" },
+      {
+        key: "D",
+        text: "Mengukur tingkat kepuasan pelanggan secara statistik",
+      },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 8,
+    program: "UI/UX Design",
+    question:
+      "Manakah tools desain antarmuka yang berbasis web dan sangat populer untuk kolaborasi tim secara real-time?",
+    options: [
+      { key: "A", text: "Adobe Dreamweaver" },
+      { key: "B", text: "Figma" },
+      { key: "C", text: "Microsoft Excel" },
+      { key: "D", text: "Notepad++" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 9,
+    program: "UI/UX Design",
+    question:
+      "Apa arti dari 'Whitespace' (ruang kosong) dalam prinsip tata letak visual?",
+    options: [
+      {
+        key: "A",
+        text: "Ruang kosong di sekitar elemen untuk meningkatkan keterbacaan dan fokus visual",
+      },
+      {
+        key: "B",
+        text: "Kesalahan pengkodean CSS yang menghasilkan area putih",
+      },
+      { key: "C", text: "Area layar yang rusak karena resolusi monitor" },
+      { key: "D", text: "Halaman web yang belum diisi konten teks" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 10,
+    program: "UI/UX Design",
+    question: "Apa tujuan dari penerapan High-Fidelity (Hi-Fi) Prototype?",
+    options: [
+      {
+        key: "A",
+        text: "Menyerupai produk akhir dengan detail visual, warna, dan interaksi yang utuh",
+      },
+      { key: "B", text: "Membuat sketsa hitam putih kasar di atas kertas" },
+      { key: "C", text: "Menguji logika pemrograman database server" },
+      { key: "D", text: "Menghapus elemen navigasi yang tidak penting" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 11,
+    program: "UI/UX Design",
+    question:
+      "Menurut Hick's Law, apa yang terjadi jika waktu atau jumlah pilihan yang disajikan kepada pengguna semakin banyak?",
+    options: [
+      {
+        key: "A",
+        text: "Waktu pengambilan keputusan pengguna akan semakin lama",
+      },
+      { key: "B", text: "Pengguna akan merasa jauh lebih bahagia" },
+      { key: "C", text: "Konversi penjualan produk pasti meningkat drastis" },
+      { key: "D", text: "Aplikasi berjalan lebih cepat" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 12,
+    program: "UI/UX Design",
+    question:
+      "Apa fokus utama dari fase 'Empathize' dalam metodologi Design Thinking?",
+    options: [
+      {
+        key: "A",
+        text: "Memahami kebutuhan, emosi, dan masalah pengguna secara mendalam",
+      },
+      { key: "B", text: "Memasarkan produk ke media sosial" },
+      { key: "C", text: "Menulis kode program production-ready" },
+      { key: "D", text: "Menghitung anggaran biaya proyek" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 13,
+    program: "UI/UX Design",
+    question:
+      "Apa yang dimaksud dengan 'Accessibility' (A11y) dalam desain produk digital?",
+    options: [
+      {
+        key: "A",
+        text: "Memastikan produk dapat digunakan oleh semua orang, termasuk penyandang disabilitas",
+      },
+      { key: "B", text: "Kecepatan akses server website dari luar negeri" },
+      { key: "C", text: "Kemudahan mendownload aplikasi di Play Store" },
+      { key: "D", text: "Ketersediaan jaringan internet gratis" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 14,
+    program: "UI/UX Design",
+    question:
+      "Komponen UI apakah yang biasanya digunakan untuk navigasi utama di bagian atas atau samping aplikasi?",
+    options: [
+      { key: "A", text: "Navbar / Sidebar" },
+      { key: "B", text: "Checkbox tunggal" },
+      { key: "C", text: "Footer Copyright" },
+      { key: "D", text: "Tooltip teks kecil" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 15,
+    program: "UI/UX Design",
+    question:
+      "Apa manfaat utama dari melakukan evaluasi heuristik (*Heuristic Evaluation*)?",
+    options: [
+      {
+        key: "A",
+        text: "Menemukan masalah usability pada antarmuka berdasarkan prinsip desain yang diakui",
+      },
+      { key: "B", text: "Menguji kecepatan respons database SQL" },
+      { key: "C", text: "Menghitung jumlah klik iklan banner" },
+      { key: "D", text: "Membuat database pelanggan baru" },
+    ],
+    correctAnswer: "A",
+  },
+
+  {
+    id: 101,
+    program: "Web Development",
+    question:
+      "Manakah hook bawaan di React yang digunakan untuk mengelola state lokal pada komponen fungsional?",
+    options: [
+      { key: "A", text: "useEffect" },
+      { key: "B", text: "useState" },
+      { key: "C", text: "useContext" },
+      { key: "D", text: "useReducer" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 102,
+    program: "Web Development",
+    question:
+      "Properti CSS apa yang digunakan dalam Tailwind CSS untuk membuat elemen menjadi flex container?",
+    options: [
+      { key: "A", text: "block" },
+      { key: "B", text: "grid" },
+      { key: "C", text: "flex" },
+      { key: "D", text: "inline" },
+    ],
+    correctAnswer: "C",
+  },
+  {
+    id: 103,
+    program: "Web Development",
+    question: "Apa fungsi dari tag semantik <nav> di dalam dokumen HTML5?",
+    options: [
+      { key: "A", text: "Membuat garis pembatas horizontal" },
+      { key: "B", text: "Wadah untuk blok navigasi atau tautan menu" },
+      { key: "C", text: "Menampilkan gambar latar belakang" },
+      { key: "D", text: "Membuat form input data" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 104,
+    program: "Web Development",
+    question:
+      "Manakah tipe data berikut yang BUKAN merupakan tipe data primitif dalam JavaScript?",
+    options: [
+      { key: "A", text: "String" },
+      { key: "B", text: "Boolean" },
+      { key: "C", text: "Object" },
+      { key: "D", text: "Undefined" },
+    ],
+    correctAnswer: "C",
+  },
+  {
+    id: 105,
+    program: "Web Development",
+    question: "Apa fungsi utama dari Git dalam pengembangan perangkat lunak?",
+    options: [
+      { key: "A", text: "Menjalankan server basis data" },
+      { key: "B", text: "Sistem kontrol versi untuk melacak perubahan kode" },
+      { key: "C", text: "Mengompilasi bahasa pemrograman C++" },
+      { key: "D", text: "Mendesain ikon dan ilustrasi vektor" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 106,
+    program: "Web Development",
+    question:
+      "Apa ekstensi file standar untuk komponen yang ditulis menggunakan TypeScript di React (Vite)?",
+    options: [
+      { key: "A", text: ".js" },
+      { key: "B", text: ".ts" },
+      { key: "C", text: ".tsx" },
+      { key: "D", text: ".jsx" },
+    ],
+    correctAnswer: "C",
+  },
+  {
+    id: 107,
+    program: "Web Development",
+    question:
+      "Metode HTTP manakah yang umumnya digunakan untuk mengirim data baru ke server dalam RESTful API?",
+    options: [
+      { key: "A", text: "GET" },
+      { key: "B", text: "POST" },
+      { key: "C", text: "DELETE" },
+      { key: "D", text: "HEAD" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 108,
+    program: "Web Development",
+    question:
+      "Manakah library manajemen state global yang populer digunakan bersama React?",
+    options: [
+      { key: "A", text: "Pandas" },
+      { key: "B", text: "Zustand / Redux" },
+      { key: "C", text: "TensorFlow" },
+      { key: "D", text: "Matplotlib" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 109,
+    program: "Web Development",
+    question:
+      "Apa kepanjangan dari DOM dalam konteks pengembangan web front-end?",
+    options: [
+      { key: "A", text: "Document Object Model" },
+      { key: "B", text: "Data Oriented Module" },
+      { key: "C", text: "Digital Online Media" },
+      { key: "D", text: "Dynamic Outer Method" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 110,
+    program: "Web Development",
+    question: "Framework CSS mana yang menggunakan pendekatan utility-first?",
+    options: [
+      { key: "A", text: "Bootstrap" },
+      { key: "B", text: "Tailwind CSS" },
+      { key: "C", text: "Foundation" },
+      { key: "D", text: "Bulma" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 111,
+    program: "Web Development",
+    question:
+      "Apa fungsi dari atribut 'key' saat merender list elemen di React?",
+    options: [
+      {
+        key: "A",
+        text: "Membantu React mengidentifikasi elemen mana yang berubah, ditambah, atau dihapus",
+      },
+      { key: "B", text: "Mengenkripsi data teks yang ditampilkan" },
+      { key: "C", text: "Menentukan warna latar belakang item list" },
+      { key: "D", text: "Mengatur ukuran font secara otomatis" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 112,
+    program: "Web Development",
+    question: "Apa itu Asynchronous JavaScript (Async/Await)?",
+    options: [
+      {
+        key: "A",
+        text: "Cara menangani operasi yang membutuhkan waktu seperti fetch API tanpa memblokir thread utama",
+      },
+      { key: "B", text: "Perintah untuk memperlambat eksekusi program" },
+      { key: "C", text: "Cara mendeklarasikan variabel global" },
+      { key: "D", text: "Fungsi untuk menghapus cache browser" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 113,
+    program: "Web Development",
+    question:
+      "Apa fungsi dari perintah 'npm run build' pada proyek berbasis Vite/React?",
+    options: [
+      {
+        key: "A",
+        text: "Mengompilasi dan mengoptimalkan aset aplikasi untuk siap di-deploy ke production",
+      },
+      { key: "B", text: "Menjalankan server development lokal" },
+      { key: "C", text: "Menginstal package baru dari internet" },
+      { key: "D", text: "Menghapus seluruh file repository" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 114,
+    program: "Web Development",
+    question:
+      "Manakah selector CSS yang digunakan untuk menargetkan elemen berdasarkan ID unik?",
+    options: [
+      { key: "A", text: ".nama-id" },
+      { key: "B", text: "#nama-id" },
+      { key: "C", text: "nama-id" },
+      { key: "D", text: "*nama-id" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 115,
+    program: "Web Development",
+    question: "Apa kegunaan dari LocalStorage di dalam browser web?",
+    options: [
+      {
+        key: "A",
+        text: "Menyimpan data kunci-nilai secara persisten di browser tanpa batas waktu kedaluwarsa otomatis",
+      },
+      { key: "B", text: "Mengirim email otomatis ke server" },
+      { key: "C", text: "Menyimpan file video berukuran besar secara online" },
+      { key: "D", text: "Mengamankan password user dengan enkripsi militer" },
+    ],
+    correctAnswer: "A",
+  },
+
+  {
+    id: 201,
+    program: "Data Science",
+    question:
+      "Pustaka Python manakah yang paling populer digunakan untuk manipulasi dan analisis data tabular?",
+    options: [
+      { key: "A", text: "NumPy" },
+      { key: "B", text: "Pandas" },
+      { key: "C", text: "Matplotlib" },
+      { key: "D", text: "TensorFlow" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 202,
+    program: "Data Science",
+    question:
+      "Dalam machine learning, apa yang dimaksud dengan proses 'Overfitting'?",
+    options: [
+      { key: "A", text: "Model terlalu sederhana untuk mempelajari pola data" },
+      {
+        key: "B",
+        text: "Model sangat akurat pada data latih tetapi buruk pada data baru",
+      },
+      { key: "C", text: "Proses menghapus data yang duplikat" },
+      { key: "D", text: "Kecepatan training model yang terlalu lambat" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 203,
+    program: "Data Science",
+    question:
+      "Metrik evaluasi apa yang biasa digunakan untuk mengukur performa model klasifikasi biner?",
+    options: [
+      { key: "A", text: "Mean Squared Error (MSE)" },
+      { key: "B", text: "Accuracy & F1-Score" },
+      { key: "C", text: "R-Squared" },
+      { key: "D", text: "Standard Deviation" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 204,
+    program: "Data Science",
+    question:
+      "Apa fungsi utama dari pustaka NumPy di dalam ekosistem Data Science Python?",
+    options: [
+      {
+        key: "A",
+        text: "Operasi komputasi numerik dan array multidimensi berkinerja tinggi",
+      },
+      { key: "B", text: "Membuat desain antarmuka web" },
+      { key: "C", text: "Mengelola manajemen routing aplikasi" },
+      { key: "D", text: "Mengirim HTTP request ke server" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 205,
+    program: "Data Science",
+    question:
+      "Apa perbedaan utama antara supervised learning dan unsupervised learning?",
+    options: [
+      {
+        key: "A",
+        text: "Supervised menggunakan data berlabel, sedangkan unsupervised menggunakan data tanpa label",
+      },
+      {
+        key: "B",
+        text: "Supervised menggunakan bahasa C++, unsupervised menggunakan Python",
+      },
+      { key: "C", text: "Supervised lebih lambat daripada unsupervised" },
+      { key: "D", text: "Tidak ada perbedaan sama sekali" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 206,
+    program: "Data Science",
+    question:
+      "Manakah teknik visualisasi data yang paling tepat untuk melihat hubungan korelasi antara dua variabel numerik?",
+    options: [
+      { key: "A", text: "Pie Chart" },
+      { key: "B", text: "Scatter Plot" },
+      { key: "C", text: "Bar Chart" },
+      { key: "D", text: "Line Chart tunggal" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 207,
+    program: "Data Science",
+    question:
+      "Apa yang dimaksud dengan 'Missing Values' dalam tahapan Data Cleaning?",
+    options: [
+      {
+        key: "A",
+        text: "Data pada kolom atau baris tertentu yang kosong atau bernilai NaN",
+      },
+      { key: "B", text: "Data yang duplikat dalam database" },
+      { key: "C", text: "Kesalahan penulisan kode sintaks Python" },
+      { key: "D", text: "Nilai target prediksi yang salah" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 208,
+    program: "Data Science",
+    question:
+      "Algoritma machine learning manakah yang termasuk ke dalam metode Clustering (unsupervised)?",
+    options: [
+      { key: "A", text: "Linear Regression" },
+      { key: "B", text: "K-Means" },
+      { key: "C", text: "Logistic Regression" },
+      { key: "D", text: "Random Forest Classifier" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 209,
+    program: "Data Science",
+    question:
+      "Apa kegunaan dari fungsi train_test_split dalam machine learning?",
+    options: [
+      {
+        key: "A",
+        text: "Membagi dataset menjadi data latih (training) dan data uji (testing)",
+      },
+      { key: "B", text: "Menghapus data pencilan (outliers)" },
+      { key: "C", text: "Mengonversi format CSV ke Excel" },
+      { key: "D", text: "Mempercepat koneksi internet" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 210,
+    program: "Data Science",
+    question:
+      "Apa fungsi dari SQL (Structured Query Language) bagi seorang Data Scientist?",
+    options: [
+      {
+        key: "A",
+        text: "Mengambil, memanipulasi, dan mengelola data yang tersimpan di relational database",
+      },
+      { key: "B", text: "Membuat animasi grafik 3D" },
+      { key: "C", text: "Menulis skrip otomatisasi browser" },
+      { key: "D", text: "Mendesain logo perusahaan" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 211,
+    program: "Data Science",
+    question: "Apa itu proses 'Normalisasi' atau 'Standarisasi' data?",
+    options: [
+      {
+        key: "A",
+        text: "Penskalaan nilai fitur agar berada dalam rentang seragam (misal 0 sampai 1)",
+      },
+      { key: "B", text: "Menghapus seluruh baris data negatif" },
+      { key: "C", text: "Mengubah tipe data string menjadi integer" },
+      { key: "D", text: "Menyimpan data ke cloud storage" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 212,
+    program: "Data Science",
+    question:
+      "Manakah metrik evaluasi yang digunakan untuk regresi linier untuk mengukur rata-rata kesalahan kuadrat?",
+    options: [
+      { key: "A", text: "Mean Squared Error (MSE)" },
+      { key: "B", text: "Accuracy Score" },
+      { key: "C", text: "Precision" },
+      { key: "D", text: "Recall" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 213,
+    program: "Data Science",
+    question: "Apa fungsi dari library Matplotlib dan Seaborn di Python?",
+    options: [
+      { key: "A", text: "Visualisasi data dan pembuatan grafik statistik" },
+      { key: "B", text: "Pelatihan model neural network" },
+      { key: "C", text: "Manajemen tabel database relasional" },
+      { key: "D", text: "Optimasi query SQL" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 214,
+    program: "Data Science",
+    question: "Apa yang dimaksud dengan 'Outlier' dalam analisis dataset?",
+    options: [
+      {
+        key: "A",
+        text: "Data point yang memiliki nilai jauh berbeda atau ekstrim dibandingkan data lainnya",
+      },
+      { key: "B", text: "Data yang hilang karena korupsi file" },
+      { key: "C", text: "Variabel target dalam machine learning" },
+      { key: "D", text: "Hasil prediksi model yang sempurna" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 215,
+    program: "Data Science",
+    question: "Apa itu Exploratory Data Analysis (EDA)?",
+    options: [
+      {
+        key: "A",
+        text: "Proses investigasi awal pada data untuk menemukan pola, Anomali, dan ringkasan statistik",
+      },
+      { key: "B", text: "Tahap menghapus kode program yang error" },
+      { key: "C", text: "Proses deployment model ke server production" },
+      { key: "D", text: "Pembuatan laporan keuangan perusahaan" },
+    ],
+    correctAnswer: "A",
+  },
+
+  {
+    id: 301,
+    program: "Digital Marketing",
+    question: "Apa singkatan dari SEO dalam strategi pemasaran digital?",
+    options: [
+      { key: "A", text: "Search Engine Optimization" },
+      { key: "B", text: "Social Email Organization" },
+      { key: "C", text: "Sales Executive Operation" },
+      { key: "D", text: "Site Electronic Output" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 302,
+    program: "Digital Marketing",
+    question:
+      "Apa tujuan utama dari penerapan Search Engine Optimization (SEO)?",
+    options: [
+      {
+        key: "A",
+        text: "Meningkatkan peringkat dan visibilitas website di hasil pencarian organik secara gratis",
+      },
+      { key: "B", text: "Membayar iklan agar tampil instan di posisi teratas" },
+      { key: "C", text: "Membuat desain logo merek yang menarik" },
+      { key: "D", text: "Mengirim email massal ke pelanggan" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 303,
+    program: "Digital Marketing",
+    question:
+      "Apa itu Cost Per Click (CPC) dalam kampanye iklan berbayar (Paid Ads)?",
+    options: [
+      {
+        key: "A",
+        text: "Biaya yang harus dibayar pengiklan setiap kali pengguna mengklik iklan mereka",
+      },
+      { key: "B", text: "Biaya tetap bulanan untuk sewa domain website" },
+      { key: "C", text: "Pendapatan total dari penjualan produk" },
+      { key: "D", text: "Biaya pembuatan konten video promosi" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 304,
+    program: "Digital Marketing",
+    question:
+      "Metrik apa yang digunakan untuk mengukur persentase orang yang mengklik tautan email dari total email yang dibuka?",
+    options: [
+      { key: "A", text: "Bounce Rate" },
+      { key: "B", text: "Click-Through Rate (CTR)" },
+      { key: "C", text: "Conversion Rate" },
+      { key: "D", text: "Cost Per Acquisition" },
+    ],
+    correctAnswer: "B",
+  },
+  {
+    id: 305,
+    program: "Digital Marketing",
+    question:
+      "Apa fungsi utama dari Google Analytics bagi seorang digital marketer?",
+    options: [
+      {
+        key: "A",
+        text: "Melacak dan menganalisis traffic, perilaku pengguna, serta performa website",
+      },
+      { key: "B", text: "Mengatur jadwal posting otomatis di Instagram" },
+      { key: "C", text: "Membuat desain grafis banner promosi" },
+      { key: "D", text: "Mengirim pesan WhatsApp blast" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 306,
+    program: "Digital Marketing",
+    question: "Apa yang dimaksud dengan 'Content Marketing'?",
+    options: [
+      {
+        key: "A",
+        text: "Strategi pemasaran dengan membuat dan mendistribusikan konten bernilai untuk menarik audiens",
+      },
+      {
+        key: "B",
+        text: "Memasang iklan pop-up yang mengganggu di semua halaman web",
+      },
+      { key: "C", text: "Membeli database nomor telepon secara ilegal" },
+      {
+        key: "D",
+        text: "Menjual produk fisik secara langsung dari pintu ke pintu",
+      },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 307,
+    program: "Digital Marketing",
+    question:
+      "Apa perbedaan utama antara SEO dan SEM (Search Engine Marketing)?",
+    options: [
+      {
+        key: "A",
+        text: "SEO berfokus pada hasil organik (gratis), sedangkan SEM mencakup iklan berbayar di mesin pencari",
+      },
+      { key: "B", text: "SEO menggunakan sosial media, SEM menggunakan email" },
+      { key: "C", text: "Tidak ada perbedaan, keduanya adalah hal yang sama" },
+      { key: "D", text: "SEM hanya untuk website e-commerce" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 308,
+    program: "Digital Marketing",
+    question:
+      "Apa arti dari Conversion Rate dalam sebuah corong penjualan (*sales funnel*)?",
+    options: [
+      {
+        key: "A",
+        text: "Persentase pengunjung yang melakukan tindakan yang diinginkan (misal: pembelian atau registrasi)",
+      },
+      { key: "B", text: "Kecepatan loading halaman landing page" },
+      { key: "C", text: "Jumlah total tayangan iklan di media sosial" },
+      { key: "D", text: "Jumlah pengikut akun Instagram" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 309,
+    program: "Digital Marketing",
+    question:
+      "Platform apa yang paling dominan digunakan untuk pemasaran B2B (Business-to-Business) profesional?",
+    options: [
+      { key: "A", text: "LinkedIn" },
+      { key: "B", text: "TikTok" },
+      { key: "C", text: "Snapchat" },
+      { key: "D", text: "Tinder" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 310,
+    program: "Digital Marketing",
+    question: "Apa itu 'Retargeting' atau 'Remarketing' dalam iklan digital?",
+    options: [
+      {
+        key: "A",
+        text: "Menampilkan iklan kepada orang yang sebelumnya pernah berinteraksi dengan website atau brand Anda",
+      },
+      { key: "B", text: "Menghapus iklan yang tidak efektif dari Google Ads" },
+      { key: "C", text: "Mengganti target pasar secara total setiap minggu" },
+      { key: "D", text: "Membuat akun media sosial baru" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 311,
+    program: "Digital Marketing",
+    question:
+      "Apa fungsi dari Call to Action (CTA) dalam sebuah materi pemasaran?",
+    options: [
+      {
+        key: "A",
+        text: "Mengarahkan audiens untuk mengambil tindakan spesifik (misal: 'Beli Sekarang', 'Daftar Disini')",
+      },
+      { key: "B", text: "Menyembunyikan informasi kontak perusahaan" },
+      { key: "C", text: "Membuat teks paragraf menjadi lebih panjang" },
+      { key: "D", text: "Menambah ukuran file gambar banner" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 312,
+    program: "Digital Marketing",
+    question: "Apa yang dimaksud dengan 'Bounce Rate' pada analisis website?",
+    options: [
+      {
+        key: "A",
+        text: "Persentase pengunjung yang keluar dari website setelah melihat satu halaman tanpa berinteraksi lebih lanjut",
+      },
+      { key: "B", text: "Jumlah pengunjung yang melakukan transaksi berulang" },
+      { key: "C", text: "Kecepatan server saat memproses permintaan data" },
+      { key: "D", text: "Jumlah email yang gagal terkirim" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 313,
+    program: "Digital Marketing",
+    question:
+      "Strategi pemasaran apa yang memanfaatkan figur publik atau kreator konten terpercaya untuk mempromosikan produk?",
+    options: [
+      { key: "A", text: "Influencer Marketing" },
+      { key: "B", text: "Affiliate Spamming" },
+      { key: "C", text: "Cold Calling" },
+      { key: "D", text: "Direct Mail" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 314,
+    program: "Digital Marketing",
+    question: "Apa keuntungan utama dari Email Marketing dalam bisnis digital?",
+    options: [
+      {
+        key: "A",
+        text: "Memiliki kepemilikan langsung atas database audiens dan ROI (Return on Investment) yang tinggi",
+      },
+      {
+        key: "B",
+        text: "Dijamin dibaca oleh 100% penerima tanpa masuk folder spam",
+      },
+      {
+        key: "C",
+        text: "Biaya pembuatannya jauh lebih mahal daripada iklan TV",
+      },
+      { key: "D", text: "Tidak memerlukan izin dari penerima email" },
+    ],
+    correctAnswer: "A",
+  },
+  {
+    id: 315,
+    program: "Digital Marketing",
+    question:
+      "Apa tujuan dari melakukan A/B Testing pada halaman landing page iklan?",
+    options: [
+      {
+        key: "A",
+        text: "Membandingkan dua versi halaman (A dan B) untuk melihat mana yang menghasilkan konversi lebih tinggi",
+      },
+      { key: "B", text: "Menguji ketahanan server dari serangan hacker" },
+      { key: "C", text: "Menerjemahkan teks ke dalam dua bahasa berbeda" },
+      { key: "D", text: "Mengganti domain website secara berkala" },
+    ],
+    correctAnswer: "A",
+  },
+];
+
+export const QUIZ_STORAGE_KEY = "scholars_quiz_progress";

@@ -4,6 +4,7 @@ import Footer from "./components/layout/Footer";
 import HeroSection from "./pages/Landing/HeroSection";
 import HowItWorks from "./pages/Landing/HowItWorks";
 import RegistrationForm from "./pages/Registration";
+import TestPage from "./pages/Test";
 
 function LandingPage() {
   return (
@@ -16,6 +17,16 @@ function LandingPage() {
   );
 }
 
+function ComingSoonPage() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-slate-50 p-6 text-center">
+      <p className="text-lg font-medium text-slate-500">
+        Halaman ini sedang dalam pengembangan.
+      </p>
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
@@ -23,6 +34,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/test" element={<TestPage />} />{" "}
+          <Route path="*" element={<ComingSoonPage />} />
         </Routes>
       </div>
     </Router>

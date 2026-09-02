@@ -12,7 +12,7 @@ export default function Navbar() {
         />
       </div>
 
-      <Button variant="dark">Login</Button>
+      <Button variant="primary">Mulai</Button>
     </nav>
   );
 }

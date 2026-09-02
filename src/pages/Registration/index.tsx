@@ -1,93 +1,22 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import TextField from "../../components/ui/TextField";
 import Dropdown from "../../components/ui/Dropdown";
 import Button from "../../components/ui/Button";
-
-type FormData = {
-  fullName: string;
-  email: string;
-  whatsapp: string;
-  program: string;
-};
-
-type FormErrors = Partial<Record<keyof FormData, string>>;
-
-const PROGRAMS = [
-  "Web Development",
-  "Data Science",
-  "UI/UX Design",
-  "Digital Marketing",
-];
+import { useRegistrationForm } from "../../hooks/useRegistrationForm";
+import { REGISTRATION_PROGRAMS } from "../../constants/registration";
 
 export default function RegistrationForm() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState<FormData>({
-    fullName: "",
-    email: "",
-    whatsapp: "",
-    program: "",
-  });
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const validate = (data: FormData): FormErrors => {
-    const next: FormErrors = {};
-
-    if (!data.fullName.trim()) {
-      next.fullName = "Nama lengkap belum diisi";
-    } else if (data.fullName.trim().length < 3) {
-      next.fullName = "Nama terlalu pendek";
-    }
-
-    if (!data.email.trim()) {
-      next.email = "Email belum diisi";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      next.email = "Format email tidak valid";
-    }
-
-    if (!data.whatsapp.trim()) {
-      next.whatsapp = "Nomor WhatsApp belum diisi";
-    } else if (!/^[0-9+\s-]{9,15}$/.test(data.whatsapp)) {
-      next.whatsapp = "Cek kembali format nomormu";
-    }
-
-    if (!data.program) {
-      next.program = "Pilih target program dulu, ya";
-    }
-
-    return next;
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name as keyof FormData]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
-
-  const handleSelectProgram = (value: string) => {
-    setFormData((prev) => ({ ...prev, program: value }));
-    if (errors.program) {
-      setErrors((prev) => ({ ...prev, program: undefined }));
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const validationErrors = validate(formData);
-
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    setIsSubmitting(true);
-    localStorage.setItem("scholars_user", JSON.stringify(formData));
-    setTimeout(() => navigate("/test"), 450);
-  };
+  const {
+    formData,
+    errors,
+    submitError,
+    isSubmitting,
+    handleChange,
+    handleSelectProgram,
+    handleSubmit,
+  } = useRegistrationForm();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4 md:p-8">
@@ -164,10 +93,16 @@ export default function RegistrationForm() {
                 label="Target program belajar"
                 placeholder="Pilih program..."
                 value={formData.program}
-                options={PROGRAMS}
+                options={[...REGISTRATION_PROGRAMS]}
                 onChange={handleSelectProgram}
                 error={errors.program}
               />
+
+              {submitError && (
+                <p role="alert" className="text-sm font-medium text-red-500">
+                  {submitError}
+                </p>
+              )}
 
               <Button
                 type="submit"
