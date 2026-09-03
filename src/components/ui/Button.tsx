@@ -42,10 +42,11 @@ export default function Button({
     <button
       type={type}
       disabled={disabled || loading}
-      className={`group flex items-center justify-between gap-3 rounded-full py-2 pl-6 pr-2 text-sm font-bold tracking-tight transition-transform hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 ${styles.button} ${className}`}
+      className={`group flex cursor-pointer items-center justify-between gap-3 rounded-full py-2 pl-6 pr-2 text-sm font-bold tracking-tight transition-transform hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70 ${styles.button} ${className}`}
       {...props}
     >
       <span>{loading && loadingText ? loadingText : children}</span>
+
       <span
         className={`flex h-9 w-9 items-center justify-center rounded-full transition-transform group-hover:-rotate-45 ${styles.circle}`}
       >

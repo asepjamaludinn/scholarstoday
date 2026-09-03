@@ -3,8 +3,10 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import HeroSection from "./pages/Landing/HeroSection";
 import HowItWorks from "./pages/Landing/HowItWorks";
+import Expertise from "./pages/Landing/Expertise";
 import RegistrationForm from "./pages/Registration";
 import TestPage from "./pages/Test";
+import ResultPage from "./pages/Result";
 
 function LandingPage() {
   return (
@@ -12,6 +14,7 @@ function LandingPage() {
       <Navbar />
       <HeroSection />
       <HowItWorks />
+      <Expertise />
       <Footer />
     </>
   );
@@ -34,7 +37,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<RegistrationForm />} />
-          <Route path="/test" element={<TestPage />} />{" "}
+          <Route path="/test" element={<TestPage />} />
+          <Route path="/result" element={<ResultPage />} />
           <Route path="*" element={<ComingSoonPage />} />
         </Routes>
       </div>

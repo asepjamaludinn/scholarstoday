@@ -59,8 +59,8 @@ export default function RegistrationForm() {
               <TextField
                 id="fullName"
                 name="fullName"
-                label="Nama lengkap"
-                placeholder="Nama sesuai KTP"
+                label="Nama"
+                placeholder="Nama Lengkap"
                 value={formData.fullName}
                 onChange={handleChange}
                 error={errors.fullName}

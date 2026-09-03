@@ -32,6 +32,6 @@ export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
   },
 ];
 
-export const HOW_IT_WORKS_BADGE = "Alur Pengerjaan";
-export const HOW_IT_WORKS_HEADING =
+export const HOW_IT_WORKS_HEADING = "Cara Kerja";
+export const HOW_IT_WORKS_SUBHEADING =
   "Hanya butuh 3 langkah mudah untuk menemukan kelas yang tepat";

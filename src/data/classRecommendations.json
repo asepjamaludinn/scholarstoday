@@ -1,0 +1,166 @@
+[
+  {
+    "program": "Web Development",
+    "levels": [
+      {
+        "min": 80,
+        "max": 100,
+        "level": "Advanced",
+        "title": "Web Development — Advanced Track",
+        "description": "Pemahamanmu tentang fundamental web development sudah sangat kuat. Kamu siap masuk ke kelas lanjutan yang membahas arsitektur aplikasi, state management, dan best practice production-ready.",
+        "focusAreas": [
+          "Arsitektur aplikasi skala besar",
+          "State management lanjutan",
+          "Optimasi performa & testing"
+        ]
+      },
+      {
+        "min": 50,
+        "max": 79,
+        "level": "Intermediate",
+        "title": "Web Development — Intermediate Track",
+        "description": "Kamu sudah memahami dasar-dasar penting, namun masih ada beberapa konsep yang perlu diperdalam sebelum masuk ke materi lanjutan.",
+        "focusAreas": [
+          "React & component patterns",
+          "Integrasi API & async handling",
+          "Version control dengan Git"
+        ]
+      },
+      {
+        "min": 0,
+        "max": 49,
+        "level": "Beginner",
+        "title": "Web Development — Beginner Track",
+        "description": "Kelas ini akan membantumu membangun fondasi yang kuat mulai dari HTML, CSS, JavaScript dasar, hingga pengenalan React.",
+        "focusAreas": [
+          "HTML, CSS & JavaScript dasar",
+          "Struktur & semantik halaman web",
+          "Pengenalan React"
+        ]
+      }
+    ]
+  },
+  {
+    "program": "Data Science",
+    "levels": [
+      {
+        "min": 80,
+        "max": 100,
+        "level": "Advanced",
+        "title": "Data Science — Advanced Track",
+        "description": "Kamu memiliki pemahaman kuat tentang konsep machine learning dan pengolahan data. Kelas ini akan membawamu ke studi kasus nyata dan model yang lebih kompleks.",
+        "focusAreas": [
+          "Model evaluation & tuning lanjutan",
+          "Studi kasus machine learning nyata",
+          "Deployment model dasar"
+        ]
+      },
+      {
+        "min": 50,
+        "max": 79,
+        "level": "Intermediate",
+        "title": "Data Science — Intermediate Track",
+        "description": "Dasar-dasar analisis data sudah kamu kuasai. Kelas ini memperdalam machine learning dan teknik pengolahan data.",
+        "focusAreas": [
+          "Exploratory Data Analysis (EDA)",
+          "Algoritma machine learning dasar",
+          "Visualisasi data lanjutan"
+        ]
+      },
+      {
+        "min": 0,
+        "max": 49,
+        "level": "Beginner",
+        "title": "Data Science — Beginner Track",
+        "description": "Kelas ini akan mengenalkanmu pada dasar Python untuk data, statistik dasar, dan cara membaca data dengan Pandas.",
+        "focusAreas": [
+          "Python dasar untuk data",
+          "Statistik & probabilitas dasar",
+          "Pengenalan Pandas & NumPy"
+        ]
+      }
+    ]
+  },
+  {
+    "program": "UI/UX Design",
+    "levels": [
+      {
+        "min": 80,
+        "max": 100,
+        "level": "Advanced",
+        "title": "UI/UX Design — Advanced Track",
+        "description": "Kamu sudah memahami prinsip desain dan riset pengguna dengan baik. Kelas ini fokus pada studi kasus produk nyata dan design system.",
+        "focusAreas": [
+          "Design system & komponen skala besar",
+          "Studi kasus produk digital nyata",
+          "Usability testing lanjutan"
+        ]
+      },
+      {
+        "min": 50,
+        "max": 79,
+        "level": "Intermediate",
+        "title": "UI/UX Design — Intermediate Track",
+        "description": "Kamu sudah memahami dasar UI/UX, kelas ini akan memperdalam riset pengguna dan prototyping.",
+        "focusAreas": [
+          "User research & persona",
+          "Wireframing & prototyping di Figma",
+          "Prinsip visual & interaksi"
+        ]
+      },
+      {
+        "min": 0,
+        "max": 49,
+        "level": "Beginner",
+        "title": "UI/UX Design — Beginner Track",
+        "description": "Kelas ini akan mengenalkanmu pada dasar desain antarmuka, prinsip visual, dan tools desain populer.",
+        "focusAreas": [
+          "Dasar desain visual & tata letak",
+          "Pengenalan Figma",
+          "Konsep dasar UX"
+        ]
+      }
+    ]
+  },
+  {
+    "program": "Digital Marketing",
+    "levels": [
+      {
+        "min": 80,
+        "max": 100,
+        "level": "Advanced",
+        "title": "Digital Marketing — Advanced Track",
+        "description": "Pemahamanmu tentang strategi pemasaran digital sudah matang. Kelas ini membahas optimasi kampanye dan analitik lanjutan.",
+        "focusAreas": [
+          "Optimasi kampanye multi-channel",
+          "Analitik & pengambilan keputusan berbasis data",
+          "Strategi retargeting lanjutan"
+        ]
+      },
+      {
+        "min": 50,
+        "max": 79,
+        "level": "Intermediate",
+        "title": "Digital Marketing — Intermediate Track",
+        "description": "Dasar-dasar pemasaran digital sudah kamu pahami, kelas ini memperdalam SEO, SEM, dan email marketing.",
+        "focusAreas": [
+          "SEO & SEM praktis",
+          "Content & email marketing",
+          "Analisis performa dengan Google Analytics"
+        ]
+      },
+      {
+        "min": 0,
+        "max": 49,
+        "level": "Beginner",
+        "title": "Digital Marketing — Beginner Track",
+        "description": "Kelas ini akan mengenalkanmu pada konsep dasar pemasaran digital dan istilah-istilah pentingnya.",
+        "focusAreas": [
+          "Konsep dasar SEO & SEM",
+          "Pengenalan media sosial untuk bisnis",
+          "Dasar Google Analytics"
+        ]
+      }
+    ]
+  }
+]

@@ -10,10 +10,10 @@ type HeadingProps = HTMLAttributes<HTMLHeadingElement> & {
 };
 
 const LEVEL_STYLES: Record<HeadingLevel, string> = {
-  display: "text-display font-black tracking-tight",
-  h1: "text-h1 font-black tracking-tight",
-  h2: "text-h2 font-bold tracking-tight",
-  h3: "text-h3 font-semibold",
+  display: "text-display font-semibold tracking-tighter",
+  h1: "text-h1 font-semibold tracking-tighter",
+  h2: "text-h2 font-semibold tracking-tighter",
+  h3: "text-h3 font-semibold tracking-tight",
   h4: "text-h4 font-semibold",
 };
 

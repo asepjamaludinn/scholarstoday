@@ -3,11 +3,11 @@ import { Icon } from "@iconify/react";
 import StepIllustration from "../../pages/Landing/StepIllustration";
 import {
   HOW_IT_WORKS_STEPS,
-  HOW_IT_WORKS_BADGE,
   HOW_IT_WORKS_HEADING,
+  HOW_IT_WORKS_SUBHEADING,
 } from "../../constants/howItWorks";
-import Badge from "../../components/ui/Badge";
 import Heading from "../../components/ui/Heading";
+import Text from "../../components/ui/Text";
 
 export default function HowItWorks() {
   return (
@@ -19,13 +19,13 @@ export default function HowItWorks() {
 
       <div className="relative mx-auto max-w-[1400px]">
         <div className="mb-10 flex flex-col items-center text-center sm:mb-14">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-600 ring-1 ring-slate-200">
-            <Badge>{HOW_IT_WORKS_BADGE}</Badge>
-          </div>
-
-          <Heading level="h2" className="max-w-2xl text-slate-900">
+          <Heading level="h1" className="text-slate-900">
             {HOW_IT_WORKS_HEADING}
           </Heading>
+
+          <Text size="body" className="mt-1 max-w-lg text-slate-500">
+            {HOW_IT_WORKS_SUBHEADING}
+          </Text>
         </div>
 
         <div className="relative">
@@ -37,7 +37,7 @@ export default function HowItWorks() {
               >
                 <div className="relative z-10 flex items-start justify-between">
                   <div>
-                    <p className="text-small font-medium uppercase tracking-wide text-slate-500">
+                    <p className="text-small font-medium tracking-tight text-slate-500">
                       {step.label}
                     </p>
 
