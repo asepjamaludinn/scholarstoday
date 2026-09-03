@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-type ButtonVariant = "primary" | "dark";
+type ButtonVariant = "primary" | "dark" | "warning";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
@@ -22,6 +22,10 @@ const VARIANT_STYLES: Record<
   dark: {
     button: "bg-black text-white hover:bg-slate-900",
     circle: "bg-white/10 text-white",
+  },
+  warning: {
+    button: "bg-amber-500 text-white hover:bg-amber-600",
+    circle: "bg-white text-amber-600",
   },
 };
 

@@ -1,10 +1,15 @@
 import { REGISTRATION_STORAGE_KEY } from "../constants/registration";
+import { QUIZ_STORAGE_KEY } from "../constants/mockQuestions";
 import { registrationSchema } from "../schemas/registration";
 import type { RegistrationFormData } from "../types/registration";
 
 export function saveRegistration(data: RegistrationFormData): boolean {
   try {
     localStorage.setItem(REGISTRATION_STORAGE_KEY, JSON.stringify(data));
+
+    localStorage.removeItem(QUIZ_STORAGE_KEY + "_index");
+    localStorage.removeItem(QUIZ_STORAGE_KEY + "_answers");
+
     return true;
   } catch (err) {
     console.warn("Gagal menyimpan data registrasi ke localStorage:", err);

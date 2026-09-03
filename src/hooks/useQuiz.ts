@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import {
   MOCK_QUESTIONS,
   QUIZ_STORAGE_KEY,
@@ -8,7 +8,13 @@ import { getRegistration } from "../services/registrationStorage";
 
 export type UserAnswers = Record<number, "A" | "B" | "C" | "D">;
 
-export function useQuiz() {
+type UseQuizOptions = {
+  onAutoSave?: () => void;
+};
+
+export function useQuiz(options?: UseQuizOptions) {
+  const { onAutoSave } = options ?? {};
+
   const registeredUser = useMemo(() => getRegistration(), []);
   const targetProgram = registeredUser?.program || "Web Development";
 
@@ -38,6 +44,8 @@ export function useQuiz() {
     }
   });
 
+  const isFirstAnswerSave = useRef(true);
+
   useEffect(() => {
     try {
       localStorage.setItem(
@@ -55,6 +63,12 @@ export function useQuiz() {
         QUIZ_STORAGE_KEY + "_answers",
         JSON.stringify(answers),
       );
+
+      if (isFirstAnswerSave.current) {
+        isFirstAnswerSave.current = false;
+      } else {
+        onAutoSave?.();
+      }
     } catch (err) {
       console.warn("Gagal menyimpan jawaban kuis:", err);
     }
@@ -63,9 +77,11 @@ export function useQuiz() {
   const totalQuestions = questions.length;
   const currentQuestion: Question = questions[currentIndex] || questions[0];
 
-  const answeredCount = Object.keys(answers).length;
+  const answeredCount = questions.filter((q) => answers[q.id]).length;
   const progressPercentage =
     totalQuestions > 0 ? Math.round((answeredCount / totalQuestions) * 100) : 0;
+
+  const isQuizComplete = answeredCount === totalQuestions && totalQuestions > 0;
 
   const selectAnswer = useCallback(
     (optionKey: "A" | "B" | "C" | "D") => {
@@ -106,6 +122,7 @@ export function useQuiz() {
   }, []);
 
   return {
+    user: registeredUser,
     questions,
     targetProgram,
     currentIndex,
@@ -114,6 +131,7 @@ export function useQuiz() {
     answeredCount,
     totalQuestions,
     progressPercentage,
+    isQuizComplete,
     selectAnswer,
     goToQuestion,
     nextQuestion,

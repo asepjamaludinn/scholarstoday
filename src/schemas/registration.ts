@@ -3,6 +3,8 @@ import { z } from "zod";
 const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
+const MIN_DOMISILI_LENGTH = 3;
+const MAX_DOMISILI_LENGTH = 100;
 
 const WHATSAPP_REGEX = /^(?:\+62|62|0)8[1-9][0-9]{7,10}$/;
 
@@ -33,6 +35,13 @@ export const registrationSchema = z.object({
     .trim()
     .min(1, "Nomor WhatsApp belum diisi")
     .regex(WHATSAPP_REGEX, "Cek kembali format nomormu"),
+
+  domisili: z
+    .string()
+    .trim()
+    .min(1, "Domisili belum diisi")
+    .min(MIN_DOMISILI_LENGTH, "Domisili terlalu pendek")
+    .max(MAX_DOMISILI_LENGTH, "Domisili terlalu panjang"),
 
   program: z.enum(REGISTRATION_PROGRAMS, {
     message: "Pilih target program dulu, ya",
