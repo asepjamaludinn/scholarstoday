@@ -12,7 +12,7 @@ export default function Expertise() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="bg-white px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24">
+    <section className="bg-white px-4 pt-8 pb-16 sm:px-6 sm:pt-10 sm:pb-20 md:px-12 md:pt-12 md:pb-24">
       <div className="mx-auto max-w-[1400px]">
         <div className="border-b border-slate-100 pb-6 sm:pb-8">
           <Heading level="h1" className="text-slate-900">

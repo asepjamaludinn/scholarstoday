@@ -8,6 +8,8 @@ import Expertise from "./pages/Landing/Expertise";
 import RegistrationForm from "./pages/Registration";
 import TestPage from "./pages/Test";
 import ResultPage from "./pages/Result";
+import NotFoundPage from "./pages/NotFound";
+import TermsPage from "./pages/Terms";
 
 function LandingPage() {
   return (
@@ -21,24 +23,14 @@ function LandingPage() {
   );
 }
 
-function ComingSoonPage() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 p-6 text-center">
-      <p className="text-lg font-medium text-slate-500">
-        Halaman ini sedang dalam pengembangan.
-      </p>
-    </div>
-  );
-}
-
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
+      <div className="flex min-h-screen flex-col bg-slate-50 font-sans">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/register" element={<RegistrationForm />} />
-
+          <Route path="/terms" element={<TermsPage />} />{" "}
           <Route
             path="/test"
             element={
@@ -47,7 +39,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="/result"
             element={
@@ -56,8 +47,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-
-          <Route path="*" element={<ComingSoonPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </Router>

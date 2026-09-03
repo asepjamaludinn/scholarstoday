@@ -1,4 +1,6 @@
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react";
 import heroImg from "../../assets/images/hero.jpg";
 import heroVideo from "../../assets/videos/hero.mp4";
 import Button from "../../components/ui/Button";
@@ -7,6 +9,19 @@ import Text from "../../components/ui/Text";
 
 export default function HeroSection() {
   const navigate = useNavigate();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   return (
     <section className="relative w-full overflow-hidden">
@@ -37,13 +52,42 @@ export default function HeroSection() {
 
       <div className="relative z-10 -mt-24 flex flex-col items-center gap-4 px-4 pb-8 sm:-mt-32 sm:px-6 sm:pb-10 md:absolute md:inset-x-0 md:bottom-10 md:mt-0 md:flex-row md:items-end md:justify-between md:gap-6 md:px-14 md:pb-0">
         <div className="w-[85%] max-w-sm rounded-3xl bg-white p-2.5 shadow-2xl md:w-[55%] md:max-w-md md:p-3">
-          <div className="relative aspect-video overflow-hidden rounded-2xl bg-slate-200">
+          <div
+            className="group relative aspect-video overflow-hidden rounded-2xl bg-slate-200 cursor-pointer"
+            onClick={togglePlay}
+          >
             <video
+              ref={videoRef}
               src={heroVideo}
-              className="h-full w-full object-cover"
-              controls
-              preload="metadata"
+              className="h-full w-full object-cover pointer-events-none"
+              autoPlay
+              loop
+              muted
+              playsInline
+              disablePictureInPicture
+              disableRemotePlayback
             />
+
+            <div
+              className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
+                isPlaying
+                  ? "bg-black/0 opacity-0 group-hover:opacity-100"
+                  : "bg-black/30 opacity-100"
+              }`}
+            >
+              <div
+                className={`flex h-12 w-12 items-center justify-center rounded-full bg-white/95 shadow-xl backdrop-blur-sm transition-transform duration-300 sm:h-14 sm:w-14 ${
+                  isPlaying
+                    ? "scale-90 group-hover:scale-100 text-slate-500"
+                    : "scale-100 ring-4 ring-white/20 text-primary"
+                }`}
+              >
+                <Icon
+                  icon={isPlaying ? "lucide:pause" : "lucide:play"}
+                  className={`text-xl sm:text-2xl transition-transform ${isPlaying ? "" : "translate-x-0.5"}`}
+                />
+              </div>
+            </div>
           </div>
         </div>
 

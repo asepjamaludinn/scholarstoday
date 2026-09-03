@@ -28,7 +28,7 @@ export default function TestPage() {
     prevQuestion,
   } = useQuiz({
     onAutoSave: () =>
-      showToast("Jawaban tersimpan otomatis", { variant: "info" }),
+      showToast("Jawaban tersimpan otomatis", { variant: "success" }),
   });
 
   const [showSubmitModal, setShowSubmitModal] = useState(false);

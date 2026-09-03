@@ -37,7 +37,7 @@ export default function SubmitModal({
           soal.
         </Text>
         <Text size="small" className="mb-6 text-amber-600">
-          Tindakan ini tidak bisa dibatalkan — pastikan jawabanmu sudah final.
+          Tindakan ini tidak bisa dibatalkan, pastikan jawabanmu sudah final.
         </Text>
 
         <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center">

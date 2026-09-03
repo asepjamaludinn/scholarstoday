@@ -37,17 +37,17 @@ export default function Toast({
       onTransitionEnd={() => {
         if (!visible) setShouldRender(false);
       }}
-      className={`fixed bottom-5 left-1/2 z-[60] -translate-x-1/2 transition-all duration-300 ${
+      className={`fixed bottom-24 left-1/2 z-[100] w-[90%] max-w-fit -translate-x-1/2 transition-all duration-300 sm:bottom-10 ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-3 opacity-0"
       }`}
     >
       <div
-        className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold text-white shadow-lg sm:text-sm ${styles.bg}`}
+        className={`flex items-center gap-2.5 rounded-full px-5 py-3 text-xs font-semibold text-white shadow-xl sm:text-sm ${styles.bg}`}
       >
-        <Icon icon={styles.icon} className="text-base" />
-        <span>{message}</span>
+        <Icon icon={styles.icon} className="text-lg shrink-0" />
+        <span className="truncate">{message}</span>
       </div>
     </div>
   );

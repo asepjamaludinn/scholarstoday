@@ -11,7 +11,7 @@ import Text from "../../components/ui/Text";
 
 export default function HowItWorks() {
   return (
-    <section className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 sm:py-20 md:px-12 md:py-24">
+    <section className="relative overflow-hidden bg-white px-4 pt-16 pb-8 sm:px-6 sm:pt-20 sm:pb-10 md:px-12 md:pt-24 md:pb-12">
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-3xl"
         aria-hidden="true"
