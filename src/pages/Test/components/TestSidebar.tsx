@@ -46,7 +46,7 @@ export default function TestSidebar({
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col items-start lg: items-center lg:text-center">
+        <div className="flex flex-1 flex-col items-start lg:items-center lg:text-center">
           <Text size="small" className="font-semibold text-slate-700">
             {answeredCount} dari {totalQuestions}{" "}
             <span className="hidden sm:inline">soal dijawab</span>

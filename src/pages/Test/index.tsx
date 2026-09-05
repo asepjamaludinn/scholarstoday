@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useQuiz } from "../../hooks/useQuiz";
 import { useToast } from "../../hooks/useToast";
 import { useBeforeUnload } from "../../hooks/useBeforeUnload";
+import { useLeaveGuard } from "../../hooks/useLeaveGuard";
 import Toast from "../../components/ui/Toast";
 import TestHeader from "./components/TestHeader";
 import TestSidebar from "./components/TestSidebar";
@@ -35,26 +36,11 @@ export default function TestPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const currentSelectedOption = answers[currentQuestion.id];
 
-  useEffect(() => {
-    window.history.pushState(null, "", window.location.href);
-
-    const handlePopState = () => {
-      if (isSubmitted) return;
-
-      const confirmLeave = window.confirm(
-        "Kamu yakin ingin keluar dari kuis? Progressmu tetap tersimpan, tapi kamu perlu masuk lagi lewat menu Tes.",
-      );
-
-      if (confirmLeave) {
-        navigate("/", { replace: true });
-      } else {
-        window.history.pushState(null, "", window.location.href);
-      }
-    };
-
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, [isSubmitted, navigate]);
+  useLeaveGuard(
+    !isSubmitted,
+    "Kamu yakin ingin keluar dari kuis? Progressmu tetap tersimpan, tapi kamu perlu masuk lagi lewat menu Tes.",
+    () => navigate("/", { replace: true }),
+  );
 
   useBeforeUnload(
     !isSubmitted,

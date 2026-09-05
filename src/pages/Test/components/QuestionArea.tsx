@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Icon } from "@iconify/react";
 import Heading from "../../../components/ui/Heading";
 import Text from "../../../components/ui/Text";
 import Button from "../../../components/ui/Button";
@@ -101,16 +100,17 @@ export default function QuestionArea({
       </div>
 
       <div className="mt-8 flex items-center justify-between border-t border-slate-100 pt-5 sm:mt-10 sm:pt-6">
-        <button
-          type="button"
+        <Button
+          variant="outline"
+          iconVariant="inline"
+          size="sm"
+          icon="lucide:arrow-left"
           onClick={onPrev}
           disabled={currentIndex === 0}
-          className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-600 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm"
         >
-          <Icon icon="lucide:arrow-left" className="text-base" />
           <span className="hidden sm:inline">Sebelumnya</span>
           <span className="inline sm:hidden">Kembali</span>
-        </button>
+        </Button>
 
         {isLastQuestion ? (
           <Button

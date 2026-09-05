@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { REGISTRATION_PROGRAMS } from "../constants/registration";
 
 const MIN_NAME_LENGTH = 3;
 const MAX_NAME_LENGTH = 100;
@@ -7,13 +8,6 @@ const MIN_DOMISILI_LENGTH = 3;
 const MAX_DOMISILI_LENGTH = 100;
 
 const WHATSAPP_REGEX = /^(?:\+62|62|0)8[1-9][0-9]{7,10}$/;
-
-export const REGISTRATION_PROGRAMS = [
-  "Web Development",
-  "Data Science",
-  "UI/UX Design",
-  "Digital Marketing",
-] as const;
 
 export const registrationSchema = z.object({
   fullName: z

@@ -1,5 +1,5 @@
 import { REGISTRATION_STORAGE_KEY } from "../constants/registration";
-import { QUIZ_STORAGE_KEY } from "../constants/mockQuestions";
+import { clearQuizProgress } from "./quizStorage";
 import { registrationSchema } from "../schemas/registration";
 import type { RegistrationFormData } from "../types/registration";
 
@@ -7,8 +7,7 @@ export function saveRegistration(data: RegistrationFormData): boolean {
   try {
     localStorage.setItem(REGISTRATION_STORAGE_KEY, JSON.stringify(data));
 
-    localStorage.removeItem(QUIZ_STORAGE_KEY + "_index");
-    localStorage.removeItem(QUIZ_STORAGE_KEY + "_answers");
+    clearQuizProgress();
 
     return true;
   } catch (err) {

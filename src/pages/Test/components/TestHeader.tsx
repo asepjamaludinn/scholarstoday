@@ -1,5 +1,5 @@
-import { Icon } from "@iconify/react";
 import Text from "../../../components/ui/Text";
+import Button from "../../../components/ui/Button";
 import type { RegistrationFormData } from "../../../types/registration";
 
 type TestHeaderProps = {
@@ -27,15 +27,18 @@ export default function TestHeader({ user, onFinish }: TestHeaderProps) {
         </div>
       </div>
 
-      <button
-        type="button"
+      <Button
+        variant="warning"
+        iconVariant="inline"
+        size="xs"
+        icon="lucide:check-circle"
+        iconClassName="text-base sm:text-lg"
         onClick={onFinish}
-        className="flex shrink-0 cursor-pointer items-center gap-2 rounded-full bg-amber-500 px-4 py-2 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-amber-600 sm:px-5 sm:py-2.5 sm:text-sm"
+        className="shrink-0 shadow-sm"
       >
-        <Icon icon="lucide:check-circle" className="text-base sm:text-lg" />
         <span className="hidden sm:inline">Selesai & Kumpulkan</span>
         <span className="inline sm:hidden">Kumpulkan</span>
-      </button>
+      </Button>
     </div>
   );
 }

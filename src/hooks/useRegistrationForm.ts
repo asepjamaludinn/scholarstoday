@@ -10,7 +10,7 @@ import {
   REGISTRATION_REDIRECT_DELAY_MS,
   REGISTRATION_STORAGE_KEY,
 } from "../constants/registration";
-import { QUIZ_STORAGE_KEY } from "../constants/mockQuestions";
+import { clearQuizProgress } from "../services/quizStorage";
 
 const INITIAL_FORM_DATA: RegistrationFormData = {
   fullName: "",
@@ -30,8 +30,7 @@ export function useRegistrationForm() {
 
   useEffect(() => {
     localStorage.removeItem(REGISTRATION_STORAGE_KEY);
-    localStorage.removeItem(QUIZ_STORAGE_KEY + "_index");
-    localStorage.removeItem(QUIZ_STORAGE_KEY + "_answers");
+    clearQuizProgress();
   }, []);
 
   const clearError = (field: keyof RegistrationFormData) => {

@@ -1,17 +1,8 @@
 import { useMemo } from "react";
-import { MOCK_QUESTIONS, QUIZ_STORAGE_KEY } from "../constants/mockQuestions";
-import type { UserAnswers } from "./useQuiz";
+import { MOCK_QUESTIONS } from "../constants/mockQuestions";
 import { getRegistration } from "../services/registrationStorage";
 import { getRecommendation } from "../services/recommendationService";
-
-function readStoredAnswers(): UserAnswers {
-  try {
-    const saved = localStorage.getItem(QUIZ_STORAGE_KEY + "_answers");
-    return saved ? JSON.parse(saved) : {};
-  } catch {
-    return {};
-  }
-}
+import { getQuizAnswers } from "../services/quizStorage";
 
 export function useResult() {
   const registeredUser = useMemo(() => getRegistration(), []);
@@ -22,7 +13,7 @@ export function useResult() {
     [program],
   );
 
-  const answers = useMemo(() => readStoredAnswers(), []);
+  const answers = useMemo(() => getQuizAnswers(), []);
 
   const { correctCount, totalQuestions, scorePercentage } = useMemo(() => {
     const total = questions.length;

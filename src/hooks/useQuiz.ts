@@ -1,12 +1,16 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
-import {
-  MOCK_QUESTIONS,
-  QUIZ_STORAGE_KEY,
-  type Question,
-} from "../constants/mockQuestions";
+import { MOCK_QUESTIONS, type Question } from "../constants/mockQuestions";
 import { getRegistration } from "../services/registrationStorage";
+import {
+  getQuizAnswers,
+  getQuizIndex,
+  saveQuizAnswers,
+  saveQuizIndex,
+  clearQuizProgress,
+} from "../services/quizStorage";
 
-export type UserAnswers = Record<number, "A" | "B" | "C" | "D">;
+export type { UserAnswers } from "../services/quizStorage";
+import type { UserAnswers } from "../services/quizStorage";
 
 type UseQuizOptions = {
   onAutoSave?: () => void;
@@ -26,51 +30,25 @@ export function useQuiz(options?: UseQuizOptions) {
       : MOCK_QUESTIONS.filter((q) => q.program === "Web Development");
   }, [targetProgram]);
 
-  const [currentIndex, setCurrentIndex] = useState<number>(() => {
-    try {
-      const saved = localStorage.getItem(QUIZ_STORAGE_KEY + "_index");
-      return saved ? JSON.parse(saved) : 0;
-    } catch {
-      return 0;
-    }
-  });
+  const [currentIndex, setCurrentIndex] = useState<number>(() =>
+    getQuizIndex(),
+  );
 
-  const [answers, setAnswers] = useState<UserAnswers>(() => {
-    try {
-      const saved = localStorage.getItem(QUIZ_STORAGE_KEY + "_answers");
-      return saved ? JSON.parse(saved) : {};
-    } catch {
-      return {};
-    }
-  });
+  const [answers, setAnswers] = useState<UserAnswers>(() => getQuizAnswers());
 
   const isFirstAnswerSave = useRef(true);
 
   useEffect(() => {
-    try {
-      localStorage.setItem(
-        QUIZ_STORAGE_KEY + "_index",
-        JSON.stringify(currentIndex),
-      );
-    } catch (err) {
-      console.warn("Gagal menyimpan indeks kuis:", err);
-    }
+    saveQuizIndex(currentIndex);
   }, [currentIndex]);
 
   useEffect(() => {
-    try {
-      localStorage.setItem(
-        QUIZ_STORAGE_KEY + "_answers",
-        JSON.stringify(answers),
-      );
+    saveQuizAnswers(answers);
 
-      if (isFirstAnswerSave.current) {
-        isFirstAnswerSave.current = false;
-      } else {
-        onAutoSave?.();
-      }
-    } catch (err) {
-      console.warn("Gagal menyimpan jawaban kuis:", err);
+    if (isFirstAnswerSave.current) {
+      isFirstAnswerSave.current = false;
+    } else {
+      onAutoSave?.();
     }
   }, [answers]);
 
@@ -115,8 +93,7 @@ export function useQuiz(options?: UseQuizOptions) {
   }, [currentIndex]);
 
   const resetQuiz = useCallback(() => {
-    localStorage.removeItem(QUIZ_STORAGE_KEY + "_index");
-    localStorage.removeItem(QUIZ_STORAGE_KEY + "_answers");
+    clearQuizProgress();
     setAnswers({});
     setCurrentIndex(0);
   }, []);

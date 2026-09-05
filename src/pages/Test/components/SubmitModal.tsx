@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 import Heading from "../../../components/ui/Heading";
 import Text from "../../../components/ui/Text";
+import Button from "../../../components/ui/Button";
 
 type SubmitModalProps = {
   isOpen: boolean;
@@ -41,20 +42,22 @@ export default function SubmitModal({
         </Text>
 
         <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center">
-          <button
-            type="button"
+          <Button
+            variant="outline"
+            iconVariant="none"
             onClick={onClose}
-            className="flex-1 cursor-pointer rounded-full border border-slate-200 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+            className="flex-1 text-slate-700"
           >
             Kembali Ujian
-          </button>
-          <button
-            type="button"
+          </Button>
+          <Button
+            variant="warning"
+            iconVariant="none"
             onClick={onConfirm}
-            className="flex-1 cursor-pointer rounded-full bg-amber-500 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-amber-600"
+            className="flex-1 shadow-sm"
           >
             Ya, Lihat Hasil
-          </button>
+          </Button>
         </div>
       </div>
     </div>
