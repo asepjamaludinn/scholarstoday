@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/ui/Button";
 import Text from "../../components/ui/Text";
+import Seo from "../../components/Seo";
 
 export default function NotFoundPage() {
   const navigate = useNavigate();
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center bg-slate-50 px-4 text-center selection:bg-primary selection:text-white">
+      <Seo title="Halaman Tidak Ditemukan" noIndex />
       <div className="relative z-10 flex flex-col items-center">
         <div className="flex items-center justify-center leading-none select-none">
           <span className="text-[12rem] font-light tracking-tighter text-primary sm:text-[16rem] md:text-[20rem] lg:text-[24rem]">

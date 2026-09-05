@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import { forwardRef } from "react";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 type ButtonVariant = "primary" | "dark" | "warning" | "outline";
@@ -62,25 +63,26 @@ const NONE_CONTAINER: Record<ButtonSize, string> = {
   xs: "cursor-pointer rounded-full px-3 py-1.5 text-xs font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40",
 };
 
-export default function Button({
-  children,
-  variant = "primary",
-  icon = "lucide:arrow-up-right",
-  iconClassName = "text-base",
-  iconVariant = "badge",
-  iconPosition = "left",
-  size = "md",
-  loading = false,
-  loadingText,
-  className = "",
-  disabled,
-  type = "button",
-  ...props
-}: ButtonProps) {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  {
+    children,
+    variant = "primary",
+    icon = "lucide:arrow-up-right",
+    iconClassName = "text-base",
+    iconVariant = "badge",
+    iconPosition = "left",
+    size = "md",
+    loading = false,
+    loadingText,
+    className = "",
+    disabled,
+    type = "button",
+    ...props
+  },
+  ref,
+) {
   const styles = VARIANT_STYLES[variant];
-
   const content = loading && loadingText ? loadingText : children;
-
   const isDisabled = disabled || loading;
 
   const inlineIconNode = loading ? (
@@ -92,13 +94,13 @@ export default function Button({
   if (iconVariant === "badge") {
     return (
       <button
+        ref={ref}
         type={type}
         disabled={isDisabled}
         className={`${BADGE_CONTAINER} ${styles.button} ${className}`}
         {...props}
       >
         <span>{content}</span>
-
         <span className={`${BADGE_ICON_WRAPPER} ${styles.circle}`}>
           {loading ? (
             <Icon icon="lucide:loader-2" className="animate-spin text-base" />
@@ -113,15 +115,14 @@ export default function Button({
   if (iconVariant === "inline") {
     return (
       <button
+        ref={ref}
         type={type}
         disabled={isDisabled}
         className={`${INLINE_CONTAINER[size]} ${styles.button} ${className}`}
         {...props}
       >
         {iconPosition === "left" && inlineIconNode}
-
         <span>{content}</span>
-
         {iconPosition === "right" && inlineIconNode}
       </button>
     );
@@ -129,6 +130,7 @@ export default function Button({
 
   return (
     <button
+      ref={ref}
       type={type}
       disabled={isDisabled}
       className={`${NONE_CONTAINER[size]} ${styles.button} ${className}`}
@@ -137,4 +139,6 @@ export default function Button({
       {content}
     </button>
   );
-}
+});
+
+export default Button;

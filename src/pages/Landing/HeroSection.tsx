@@ -29,6 +29,10 @@ export default function HeroSection() {
         <img
           src={heroImg}
           alt="Siswa belajar dengan semangat"
+          width={1600}
+          height={900}
+          loading="eager"
+          fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover"
         />
 

@@ -9,6 +9,7 @@ import TestHeader from "./components/TestHeader";
 import TestSidebar from "./components/TestSidebar";
 import QuestionArea from "./components/QuestionArea";
 import SubmitModal from "./components/SubmitModal";
+import Seo from "../../components/Seo";
 
 export default function TestPage() {
   const navigate = useNavigate();
@@ -60,6 +61,7 @@ export default function TestPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <Seo title="Kerjakan Kuis Penempatan" noIndex />
       <TestHeader user={user} onFinish={handleFinishQuiz} />
 
       <main className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 p-4 sm:p-6 md:gap-6 md:py-10 lg:grid-cols-[300px_1fr]">

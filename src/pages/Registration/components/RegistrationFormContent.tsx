@@ -3,17 +3,16 @@ import Dropdown from "../../../components/ui/Dropdown";
 import Button from "../../../components/ui/Button";
 import Heading from "../../../components/ui/Heading";
 import Text from "../../../components/ui/Text";
+import Card from "../../../components/ui/Card";
 import { REGISTRATION_PROGRAMS } from "../../../constants/registration";
+import type {
+  RegistrationFormData,
+  RegistrationFormErrors,
+} from "../../../types/registration";
 
 interface RegistrationFormContentProps {
-  formData: {
-    fullName: string;
-    whatsapp: string;
-    email: string;
-    domisili: string;
-    program: string;
-  };
-  errors: Record<string, string>;
+  formData: RegistrationFormData;
+  errors: RegistrationFormErrors;
   submitError: string | null;
   isSubmitting: boolean;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -31,7 +30,7 @@ export default function RegistrationFormContent({
   handleSubmit,
 }: RegistrationFormContentProps) {
   return (
-    <div className="rounded-[28px] bg-white p-8 shadow-2xl sm:p-10">
+    <Card variant="form" className="p-8 sm:p-10">
       <Text size="small" className="font-medium text-slate-400">
         Formulir pendaftaran
       </Text>
@@ -115,6 +114,6 @@ export default function RegistrationFormContent({
           Lanjut ke kuis
         </Button>
       </form>
-    </div>
+    </Card>
   );
 }

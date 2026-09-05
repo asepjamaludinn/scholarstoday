@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Icon } from "@iconify/react";
-import StepIllustration from "../../pages/Landing/StepIllustration";
+import StepIllustration from "./components/StepIllustration";
 import {
   HOW_IT_WORKS_STEPS,
   HOW_IT_WORKS_HEADING,

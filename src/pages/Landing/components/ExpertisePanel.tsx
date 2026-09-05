@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
-import type { ExpertiseItem } from "../../types/expertise";
-import Heading from "../../components/ui/Heading";
-import Text from "../../components/ui/Text";
+import type { ExpertiseItem } from "../../../types/expertise";
+import Heading from "../../../components/ui/Heading";
+import Text from "../../../components/ui/Text";
 
 type ExpertisePanelProps = {
   item: ExpertiseItem;
@@ -34,6 +34,10 @@ export default function ExpertisePanel({
           src={item.image}
           alt=""
           aria-hidden="true"
+          width={400}
+          height={225}
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover opacity-[0.07] transition-opacity duration-500 group-hover:opacity-[0.12]"
         />
       )}
@@ -59,6 +63,10 @@ export default function ExpertisePanel({
             <img
               src={item.image}
               alt={item.program}
+              width={800}
+              height={450}
+              loading="lazy"
+              decoding="async"
               className="h-full w-full object-cover"
             />
           </div>

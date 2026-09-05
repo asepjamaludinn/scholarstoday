@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ExpertisePanel from "./ExpertisePanel";
+import ExpertisePanel from "./components/ExpertisePanel";
 import Heading from "../../components/ui/Heading";
 import Text from "../../components/ui/Text";
 import {

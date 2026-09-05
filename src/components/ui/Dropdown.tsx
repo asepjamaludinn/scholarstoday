@@ -9,7 +9,7 @@ type DropdownProps = {
   onChange: (value: string) => void;
   error?: string;
   id?: string;
-};  
+};
 
 export default function Dropdown({
   label,
@@ -21,7 +21,13 @@ export default function Dropdown({
   id,
 }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const optionRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const listboxId = `${id ?? "dropdown"}-listbox`;
+  const getOptionId = (index: number) => `${id ?? "dropdown"}-option-${index}`;
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -32,20 +38,84 @@ export default function Dropdown({
         setIsOpen(false);
       }
     };
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsOpen(false);
-    };
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleEscape);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleEscape);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      optionRefs.current[highlightedIndex]?.scrollIntoView({
+        block: "nearest",
+      });
+    }
+  }, [isOpen, highlightedIndex]);
+
+  const openDropdown = (initialIndex?: number) => {
+    const selectedIndex = options.indexOf(value);
+    setHighlightedIndex(
+      initialIndex ?? (selectedIndex >= 0 ? selectedIndex : 0),
+    );
+    setIsOpen(true);
+  };
 
   const handleSelect = (option: string) => {
     onChange(option);
     setIsOpen(false);
+    buttonRef.current?.focus();
+  };
+
+  const handleButtonKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        if (!isOpen) {
+          openDropdown();
+        } else {
+          setHighlightedIndex((prev) => Math.min(prev + 1, options.length - 1));
+        }
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        if (!isOpen) {
+          openDropdown();
+        } else {
+          setHighlightedIndex((prev) => Math.max(prev - 1, 0));
+        }
+        break;
+      case "Home":
+        if (isOpen) {
+          e.preventDefault();
+          setHighlightedIndex(0);
+        }
+        break;
+      case "End":
+        if (isOpen) {
+          e.preventDefault();
+          setHighlightedIndex(options.length - 1);
+        }
+        break;
+      case "Enter":
+      case " ":
+        e.preventDefault();
+        if (isOpen) {
+          const option = options[highlightedIndex];
+          if (option) handleSelect(option);
+        } else {
+          openDropdown();
+        }
+        break;
+      case "Escape":
+        if (isOpen) {
+          e.preventDefault();
+          setIsOpen(false);
+        }
+        break;
+      case "Tab":
+        setIsOpen(false);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -58,12 +128,20 @@ export default function Dropdown({
 
       <div className="relative">
         <button
+          ref={buttonRef}
           id={id}
           type="button"
-          onClick={() => setIsOpen((open) => !open)}
+          onClick={() => (isOpen ? setIsOpen(false) : openDropdown())}
+          onKeyDown={handleButtonKeyDown}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
           aria-invalid={!!error}
+          aria-controls={listboxId}
+          aria-activedescendant={
+            isOpen && options[highlightedIndex]
+              ? getOptionId(highlightedIndex)
+              : undefined
+          }
           className={`peer flex w-full items-center justify-between border-b border-slate-200 bg-transparent px-0.5 py-3 text-left focus:outline-none ${
             value ? "text-slate-900" : "text-slate-300"
           }`}
@@ -83,22 +161,36 @@ export default function Dropdown({
 
         {isOpen && (
           <div
+            id={listboxId}
             role="listbox"
+            aria-activedescendant={
+              options[highlightedIndex]
+                ? getOptionId(highlightedIndex)
+                : undefined
+            }
             className="absolute left-0 right-0 top-[calc(100%+10px)] z-20 overflow-hidden rounded-xl border border-slate-100 bg-white py-1.5 shadow-[0_16px_40px_-12px_rgba(15,23,42,0.18)]"
           >
-            {options.map((option) => {
+            {options.map((option, index) => {
               const selected = value === option;
+              const highlighted = index === highlightedIndex;
               return (
                 <button
                   key={option}
+                  id={getOptionId(index)}
+                  ref={(el) => {
+                    optionRefs.current[index] = el;
+                  }}
                   type="button"
                   role="option"
                   aria-selected={selected}
+                  onMouseEnter={() => setHighlightedIndex(index)}
                   onClick={() => handleSelect(option)}
                   className={`flex w-full items-center justify-between px-4 py-2.5 text-left text-sm transition-colors ${
                     selected
                       ? "bg-primary/5 font-medium text-primary"
-                      : "text-slate-700 hover:bg-slate-50"
+                      : highlighted
+                        ? "bg-slate-50 text-slate-900"
+                        : "text-slate-700 hover:bg-slate-50"
                   }`}
                 >
                   {option}

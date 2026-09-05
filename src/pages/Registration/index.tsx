@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import IconButton from "../../components/ui/IconButton";
 import { useRegistrationForm } from "../../hooks/useRegistrationForm";
 import RegistrationFormContent from "./components/RegistrationFormContent";
+import Seo from "../../components/Seo";
 
 export default function RegistrationPage() {
   const navigate = useNavigate();
@@ -10,6 +11,10 @@ export default function RegistrationPage() {
 
   return (
     <div className="relative min-h-screen bg-primary p-4 md:p-8">
+      <Seo
+        title="Daftar Tes Penempatan"
+        description="Isi data dirimu untuk mulai tes penempatan dan temukan kelas Scholars Today yang paling sesuai."
+      />
       <div
         className="pointer-events-none fixed inset-0 opacity-[0.06]"
         style={{

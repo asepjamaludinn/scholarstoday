@@ -11,6 +11,7 @@ import {
   TERMS_VERSION,
   TERMS_LAST_UPDATED,
 } from "../../constants/termsData";
+import Seo from "../../components/Seo";
 
 export default function TermsPage() {
   const navigate = useNavigate();
@@ -21,6 +22,10 @@ export default function TermsPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 selection:bg-primary selection:text-white flex flex-col">
+      <Seo
+        title="Syarat & Ketentuan"
+        description="Baca Syarat & Ketentuan penggunaan platform Scholars Today."
+      />
       <Navbar />
 
       <main className="flex-1 mx-auto w-full max-w-3xl px-4 pt-32 pb-20 sm:px-6 md:pt-36">
