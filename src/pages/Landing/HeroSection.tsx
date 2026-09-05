@@ -104,7 +104,7 @@ export default function HeroSection() {
           <Button
             variant="primary"
             onClick={() => navigate("/register")}
-            className="mt-5 w-full md:w-auto"
+            className="mt-5 w-full md:w-auto cursor-pointer"
           >
             Mulai tes sekarang
           </Button>

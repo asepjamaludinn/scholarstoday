@@ -114,12 +114,17 @@ export default function ResultPage() {
 
             <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-start md:gap-12">
               <div className="flex-1">
-                <Text
-                  size="xs"
-                  className="mb-2 font-bold uppercase tracking-widest text-sky-400"
-                >
-                  Rekomendasi Kelas Untukmu
-                </Text>
+                <div className="mb-3 flex items-center gap-3">
+                  <Text
+                    size="xs"
+                    className="font-bold uppercase tracking-widest text-sky-400"
+                  >
+                    Rekomendasi Kelas Untukmu
+                  </Text>
+                  <span className="rounded-full bg-sky-500/20 px-3 py-0.5 text-xs font-bold text-sky-300 border border-sky-400/30">
+                    Level: {recommendation.level}
+                  </span>
+                </div>
 
                 <Heading level="h2" className="mb-4 text-white">
                   {recommendation.title}
@@ -200,7 +205,7 @@ export default function ResultPage() {
             variant="dark"
             onClick={() => navigate("/")}
             icon="lucide:home"
-            className="w-full py-3 sm:w-auto sm:py-2.5"
+            className="w-full py-3 sm:w-auto sm:py-2.5 cursor-pointer"
           >
             Kembali ke Beranda
           </Button>

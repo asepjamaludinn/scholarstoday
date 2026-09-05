@@ -43,7 +43,7 @@ export default function NotFoundPage() {
           variant="dark"
           onClick={() => navigate("/")}
           icon="lucide:home"
-          className="px-8"
+          className="px-8 cursor-pointer"
         >
           Kembali ke Beranda
         </Button>

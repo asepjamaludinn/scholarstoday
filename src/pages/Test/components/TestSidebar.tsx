@@ -111,6 +111,31 @@ export default function TestSidebar({
             );
           })}
         </div>
+
+        <div
+          className={`mt-5 border-t border-slate-100 pt-4 ${
+            isNavOpen ? "flex" : "hidden"
+          } flex-wrap items-center justify-center gap-x-4 gap-y-2 lg:flex`}
+        >
+          <div className="flex items-center gap-1.5">
+            <span className="block h-3 w-3 rounded-md bg-emerald-50 border border-emerald-200" />
+            <Text size="xs" className="text-slate-500 font-medium">
+              Terjawab
+            </Text>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="block h-3 w-3 rounded-md bg-slate-100 border border-transparent" />
+            <Text size="xs" className="text-slate-500 font-medium">
+              Belum
+            </Text>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className="block h-3 w-3 rounded-md bg-primary border border-primary" />
+            <Text size="xs" className="text-slate-500 font-medium">
+              Aktif
+            </Text>
+          </div>
+        </div>
       </div>
 
       <button

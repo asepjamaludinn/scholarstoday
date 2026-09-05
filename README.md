@@ -1,5 +1,8 @@
 # Scholars Today
 
+> **GitHub Repository:** [https://github.com/asepjamaludinn/scholarstoday](https://github.com/asepjamaludinn/scholarstoday)  
+> **Live Demo:** [https://scholarstoday.vercel.app/](https://scholarstoday.vercel.app/)
+
 An educational web platform designed to help students and professionals identify the right learning path through an interactive placement test. The application guides users from initial registration through a dynamic quiz, automated scoring, and a personalized course recommendation delivered via WhatsApp consultation.
 
 ## Table of Contents
