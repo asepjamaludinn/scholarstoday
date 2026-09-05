@@ -8,6 +8,7 @@ type SubmitModalProps = {
   isOpen: boolean;
   answeredCount: number;
   totalQuestions: number;
+  isComplete: boolean;
   onClose: () => void;
   onConfirm: () => void;
 };
@@ -16,6 +17,7 @@ export default function SubmitModal({
   isOpen,
   answeredCount,
   totalQuestions,
+  isComplete,
   onClose,
   onConfirm,
 }: SubmitModalProps) {
@@ -65,6 +67,8 @@ export default function SubmitModal({
 
   if (!isOpen) return null;
 
+  const remainingCount = totalQuestions - answeredCount;
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs"
@@ -105,9 +109,17 @@ export default function SubmitModal({
           <span className="font-semibold text-slate-900">{totalQuestions}</span>{" "}
           soal.
         </Text>
-        <Text size="small" className="mb-6 text-amber-600">
-          Tindakan ini tidak bisa dibatalkan, pastikan jawabanmu sudah final.
-        </Text>
+
+        {isComplete ? (
+          <Text size="small" className="mb-6 text-amber-600">
+            Tindakan ini tidak bisa dibatalkan, pastikan jawabanmu sudah final.
+          </Text>
+        ) : (
+          <Text size="small" className="mb-6 text-red-500">
+            Masih ada <b>{remainingCount}</b> soal yang belum dijawab. Lengkapi
+            semua soal terlebih dahulu untuk melihat hasil.
+          </Text>
+        )}
 
         <div className="flex flex-col-reverse items-stretch gap-3 sm:flex-row sm:items-center">
           <Button
@@ -123,6 +135,7 @@ export default function SubmitModal({
             variant="warning"
             iconVariant="none"
             onClick={onConfirm}
+            disabled={!isComplete}
             className="flex-1 shadow-sm"
           >
             Ya, Lihat Hasil

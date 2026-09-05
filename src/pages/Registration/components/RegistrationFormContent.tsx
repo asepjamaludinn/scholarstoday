@@ -107,7 +107,7 @@ export default function RegistrationFormContent({
         <Button
           type="submit"
           variant="primary"
-          className="mt-1 w-full"
+          className="mt-1 w-full cursor-pointer"
           loading={isSubmitting}
           loadingText="Menyiapkan kuismu..."
         >

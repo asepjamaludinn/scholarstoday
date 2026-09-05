@@ -7,7 +7,10 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl flex items-center justify-between px-6 py-3 bg-white/80 backdrop-blur-md shadow-sm ring-1 ring-slate-900/5 rounded-full">
-      <div className="flex items-center gap-3 cursor-pointer">
+      <div
+        className="flex items-center gap-3 cursor-pointer"
+        onClick={() => navigate("/")}
+      >
         <img
           src={logoImg}
           alt="Scholars Today Logo"
@@ -19,7 +22,11 @@ export default function Navbar() {
         />
       </div>
 
-      <Button variant="primary" onClick={() => navigate("/register")}>
+      <Button
+        variant="primary"
+        onClick={() => navigate("/register")}
+        className="cursor-pointer"
+      >
         Mulai
       </Button>
     </nav>

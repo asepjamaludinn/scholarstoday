@@ -26,11 +26,6 @@ export function saveQuizAnswers(answers: UserAnswers): boolean {
   }
 }
 
-export function hasQuizAnswers(): boolean {
-  const answers = getQuizAnswers();
-  return Object.keys(answers).length > 0;
-}
-
 export function getQuizIndex(): number {
   try {
     const raw = localStorage.getItem(INDEX_KEY);

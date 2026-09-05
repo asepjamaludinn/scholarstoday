@@ -1,5 +1,8 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
-import { MOCK_QUESTIONS, type Question } from "../constants/mockQuestions";
+import {
+  getQuestionsForProgram,
+  type Question,
+} from "../constants/mockQuestions";
 import { getRegistration } from "../services/registrationStorage";
 import {
   getQuizAnswers,
@@ -14,21 +17,19 @@ import type { UserAnswers } from "../services/quizStorage";
 
 type UseQuizOptions = {
   onAutoSave?: () => void;
+  onAutoSaveError?: () => void;
 };
 
 export function useQuiz(options?: UseQuizOptions) {
-  const { onAutoSave } = options ?? {};
+  const { onAutoSave, onAutoSaveError } = options ?? {};
 
   const registeredUser = useMemo(() => getRegistration(), []);
   const targetProgram = registeredUser?.program || "Web Development";
 
-  const questions = useMemo(() => {
-    const filtered = MOCK_QUESTIONS.filter((q) => q.program === targetProgram);
-
-    return filtered.length > 0
-      ? filtered
-      : MOCK_QUESTIONS.filter((q) => q.program === "Web Development");
-  }, [targetProgram]);
+  const questions = useMemo(
+    () => getQuestionsForProgram(registeredUser?.program),
+    [registeredUser?.program],
+  );
 
   const [currentIndex, setCurrentIndex] = useState<number>(() =>
     getQuizIndex(),
@@ -36,19 +37,23 @@ export function useQuiz(options?: UseQuizOptions) {
 
   const [answers, setAnswers] = useState<UserAnswers>(() => getQuizAnswers());
 
-  const isFirstAnswerSave = useRef(true);
+  const initialAnswersRef = useRef(answers);
 
   useEffect(() => {
     saveQuizIndex(currentIndex);
   }, [currentIndex]);
 
   useEffect(() => {
-    saveQuizAnswers(answers);
+    const saved = saveQuizAnswers(answers);
 
-    if (isFirstAnswerSave.current) {
-      isFirstAnswerSave.current = false;
-    } else {
+    if (answers === initialAnswersRef.current) {
+      return;
+    }
+
+    if (saved) {
       onAutoSave?.();
+    } else {
+      onAutoSaveError?.();
     }
   }, [answers]);
 

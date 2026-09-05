@@ -107,6 +107,7 @@ export default function QuestionArea({
           icon="lucide:arrow-left"
           onClick={onPrev}
           disabled={currentIndex === 0}
+          className="cursor-pointer"
         >
           <span className="hidden sm:inline">Sebelumnya</span>
           <span className="inline sm:hidden">Kembali</span>
@@ -117,11 +118,17 @@ export default function QuestionArea({
             variant="warning"
             onClick={onFinish}
             icon="lucide:check-circle"
+            className="cursor-pointer"
           >
             Selesai
           </Button>
         ) : (
-          <Button variant="primary" onClick={onNext} icon="lucide:arrow-right">
+          <Button
+            variant="primary"
+            onClick={onNext}
+            icon="lucide:arrow-right"
+            className="cursor-pointer"
+          >
             Selanjutnya
           </Button>
         )}

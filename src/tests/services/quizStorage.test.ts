@@ -2,7 +2,6 @@ import { describe, it, expect, beforeEach } from "vitest";
 import {
   getQuizAnswers,
   saveQuizAnswers,
-  hasQuizAnswers,
   getQuizIndex,
   saveQuizIndex,
   clearQuizProgress,
@@ -32,14 +31,6 @@ describe("quizStorage", () => {
     saveQuizIndex(4);
 
     expect(getQuizIndex()).toBe(4);
-  });
-
-  it("reports hasQuizAnswers as false until an answer is saved", () => {
-    expect(hasQuizAnswers()).toBe(false);
-
-    saveQuizAnswers({ 1: "B" });
-
-    expect(hasQuizAnswers()).toBe(true);
   });
 
   it("clears both answers and index from storage", () => {

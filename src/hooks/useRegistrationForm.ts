@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type {
   RegistrationFormData,
@@ -6,11 +6,7 @@ import type {
 } from "../types/registration";
 import { validateRegistration } from "../utils/validateRegistration";
 import { saveRegistration } from "../services/registrationStorage";
-import {
-  REGISTRATION_REDIRECT_DELAY_MS,
-  REGISTRATION_STORAGE_KEY,
-} from "../constants/registration";
-import { clearQuizProgress } from "../services/quizStorage";
+import { REGISTRATION_REDIRECT_DELAY_MS } from "../constants/registration";
 
 const INITIAL_FORM_DATA: RegistrationFormData = {
   fullName: "",
@@ -27,11 +23,6 @@ export function useRegistrationForm() {
   const [errors, setErrors] = useState<RegistrationFormErrors>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  useEffect(() => {
-    localStorage.removeItem(REGISTRATION_STORAGE_KEY);
-    clearQuizProgress();
-  }, []);
 
   const clearError = (field: keyof RegistrationFormData) => {
     setErrors((prev) => (prev[field] ? { ...prev, [field]: undefined } : prev));

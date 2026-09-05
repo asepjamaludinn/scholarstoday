@@ -13,6 +13,7 @@ type TestSidebarProps = {
   answers: UserAnswers;
   currentIndex: number;
   onGoToQuestion: (index: number) => void;
+  onResetQuiz: () => void;
 };
 
 export default function TestSidebar({
@@ -24,6 +25,7 @@ export default function TestSidebar({
   answers,
   currentIndex,
   onGoToQuestion,
+  onResetQuiz,
 }: TestSidebarProps) {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -110,6 +112,15 @@ export default function TestSidebar({
           })}
         </div>
       </div>
+
+      <button
+        type="button"
+        onClick={onResetQuiz}
+        className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-xs font-semibold text-slate-500 shadow-sm transition-colors hover:border-red-200 hover:bg-red-50 hover:text-red-500 lg:rounded-3xl"
+      >
+        <Icon icon="lucide:rotate-ccw" className="text-sm" />
+        Ulangi Tes dari Awal
+      </button>
     </aside>
   );
 }

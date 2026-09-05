@@ -32,7 +32,7 @@ export default function RegistrationPage() {
             onClick={() => navigate(-1)}
             aria-label="Kembali"
             title="Kembali"
-            className="mb-4 shadow-lg"
+            className="mb-4 shadow-lg cursor-pointer"
           >
             <Icon icon="lucide:arrow-left" className="text-lg" />
           </IconButton>

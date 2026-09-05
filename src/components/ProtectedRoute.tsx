@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { getRegistration } from "../services/registrationStorage";
-import { hasQuizAnswers } from "../services/quizStorage";
+import { isQuizComplete } from "../services/quizCompletion";
 
 type ProtectedRouteProps = {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ export default function ProtectedRoute({
     return <Navigate to="/register" replace />;
   }
 
-  if (requireAnswers && !hasQuizAnswers()) {
+  if (requireAnswers && !isQuizComplete()) {
     return <Navigate to="/test" replace />;
   }
 
