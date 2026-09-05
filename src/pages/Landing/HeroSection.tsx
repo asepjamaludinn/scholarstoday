@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
-import heroImg from "../../assets/images/hero.jpg";
+import heroImg from "../../assets/images/hero.webp";
 import heroVideo from "../../assets/videos/hero.mp4";
 import Button from "../../components/ui/Button";
 import Heading from "../../components/ui/Heading";

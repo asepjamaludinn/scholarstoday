@@ -1,8 +1,8 @@
 import type { ExpertiseItem } from "../types/expertise";
-import uiuxImg from "../assets/images/uiux.jpg";
-import webdevImg from "../assets/images/webdev.jpg";
-import dataScienceImg from "../assets/images/datascience.jpg";
-import marketingImg from "../assets/images/marketing.jpg";
+import uiuxImg from "../assets/images/uiux.webp";
+import webdevImg from "../assets/images/webdev.webp";
+import dataScienceImg from "../assets/images/datascience.webp";
+import marketingImg from "../assets/images/marketing.webp";
 
 export const EXPERTISE_ITEMS: ExpertiseItem[] = [
   {
